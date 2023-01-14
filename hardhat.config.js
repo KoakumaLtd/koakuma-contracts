@@ -1,30 +1,27 @@
-// hardhat.config.js
-require('@nomiclabs/hardhat-ethers');
-const { mnemonic } = require('./secrets.json');
+require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
- module.exports = {
-    solidity: "0.8.0",
-    defaultNetwork: "mainnet",
-    networks: {
-      localhost: {
-        url: "http://127.0.0.1:8545"
-      },
-      hardhat: {
-      },
-      testnet: {
-        url: "https://data-seed-prebsc-1-s1.binance.org:8545",
-        chainId: 97,
-        gasPrice: 20000000000,
-        accounts: {mnemonic: mnemonic}
-      },
-      mainnet: {
-        url: "https://bsc-dataseed.binance.org/",
-        chainId: 56,
-        gasPrice: 20000000000,
-        accounts: {mnemonic: mnemonic}
-      }
+module.exports = {
+  solidity: "0.8.9",
+  networks: {
+    hardhat: {
+      chainId: 1337,
     },
-  };
+    bsc: {
+      url: "https://bsc-dataseed1.defibit.io/",
+      //accounts: {mnemonic: mnemonic},
+    }
+    //bsctestnet: {
+    //  url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+    //  accounts: ["32ffd5be0ac8aac19c8214201d26b5ccd58d40c7d8943c26bc192ca9058b1b74"]
+    //},
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://bscscan.com/
+    // apiKey: ""
+  },
+};
